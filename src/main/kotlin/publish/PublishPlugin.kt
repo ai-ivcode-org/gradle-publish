@@ -18,8 +18,10 @@ class PublishPlugin: Plugin<Project> {
         project.plugins.apply("java")
 
         // ensure a sources JAR is produced and attached to the java component
-        project.extensions.configure(JavaPluginExtension::class.java) {
-            withSourcesJar()
+        project.pluginManager.withPlugin("java") {
+            project.extensions.configure(JavaPluginExtension::class.java) {
+                withSourcesJar()
+            }
         }
     }
 
