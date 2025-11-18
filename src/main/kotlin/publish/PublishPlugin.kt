@@ -12,6 +12,11 @@ class PublishPlugin: Plugin<Project> {
     override fun apply(project: Project) {
         applyJavaPlugin(project)
         applyPublishPlugin(project)
+        applyGradleActionsPlugin(project)
+    }
+
+    private fun applyGradleActionsPlugin(project: Project) {
+        project.plugins.apply("org.ivcode.gradle-actions")
     }
 
     private fun applyJavaPlugin(project: Project) {

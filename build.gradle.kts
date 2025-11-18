@@ -39,10 +39,17 @@ gradlePlugin {
             id = "org.ivcode.gradle-publish"
             implementationClass = "org.ivcode.gradle.publish.PublishPlugin"
         }
+        create("gradle-actions") {
+            id = "org.ivcode.gradle-actions"
+            implementationClass = "org.ivcode.gradle.actions.ActionsPlugin"
+        }
     }
 }
 
 dependencies {
+    // mustache
+    implementation("com.github.spullara.mustache.java:compiler:0.9.6")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.0")
 }
