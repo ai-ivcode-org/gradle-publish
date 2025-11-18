@@ -30,3 +30,36 @@ AWS_SECRET_ACCESS_KEY
 - **Publication Name:** `mavenJava` (uses the project’s Java component)
 - **Repository URL:** `s3://maven.ivcode.org/{snapshot|release}/`
 - **Credentials:** Environment variables (see above)  
+
+---
+## Usage
+
+### Add repository with plugin
+
+`settings.gradle.kts`
+
+Snapshot:
+```kotlin
+pluginManagement {
+    repositories {
+        maven { url = uri("https://s3.us-west-2.amazonaws.com/maven.ivcode.org/snapshot/") }
+    }
+}
+```
+
+Release:
+```kotlin
+pluginManagement {
+    repositories {
+        maven { url = uri("https://s3.us-west-2.amazonaws.com/maven.ivcode.org/release/") }
+    }
+}
+```
+
+### Apply the plugin
+`build.gradle.kts`
+```kotlin
+plugins {
+    id("org.ivcode.gradle-publish") version "x.y.z"
+}
+```
